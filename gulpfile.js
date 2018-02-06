@@ -11,11 +11,11 @@ gulp.task('sass', function () {
 
 gulp.task('move', function () {
 	console.log('Running move');
-	return gulp.src('./src/**.*')
+	return gulp.src('./src/**/*.*')
 		.pipe(gulp.dest('dist'));
 });
 gulp.task('watch', function() {
-	return gulp.watch('./src/**.*', ['sass', 'move'])
+	return gulp.watch('./src/**/*.*', ['sass', 'move'])
 });
 
 gulp.task('server', function() {
