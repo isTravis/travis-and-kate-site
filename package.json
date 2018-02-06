@@ -1,0 +1,28 @@
+{
+  "name": "travis-and-kate",
+  "version": "0.0.1",
+  "description": "Wedding site",
+  "author": "Travis and Kate <travis.s.rich@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pubpub/pubpub.git"
+  },
+  "main": "init.js",
+  "scripts": {
+    "build": "node-sass --include-path scss style.scss style.css",
+    "start": "gulp start"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-server-livereload": "^1.9.2",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.14.12",
+    "simple-autoreload-server": "^0.2.7"
+  },
+  "engines": {
+    "node": "8.9.2"
+  }
+}
