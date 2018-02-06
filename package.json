@@ -10,7 +10,7 @@
   },
   "main": "init.js",
   "scripts": {
-    "build": "node-sass --include-path scss style.scss style.css",
+    "build": "gulp build",
     "start": "gulp start"
   },
   "dependencies": {

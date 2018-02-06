@@ -24,3 +24,4 @@ gulp.task('server', function() {
 });
 
 gulp.task('start', ['watch', 'server']);
+gulp.task('build', ['sass', 'move']);
