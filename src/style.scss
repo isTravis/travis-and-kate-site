@@ -32,6 +32,9 @@ nav {
 		margin: 0;
 		padding: 0;
 		text-align: center;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
 		li {
 			display: inline-block;
 			padding: 0px 20px 10px;
