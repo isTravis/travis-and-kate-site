@@ -76,6 +76,20 @@
 			<section>
 				<h2 id="rsvp">RSVP</h1>	
 				<p>Please <a href="mailto:rsvp@travisandkate.com?subject=Wedding RSVP">email us to RSVP<a>. Food will be served family style, so no need to specify preference. Though, please let us know if you have any allergies or restrictions.</p>
+				<form name="contact" netlify-honeypot="bot-field" method="POST" netlify>
+				  <p class="hidden">
+				    <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+				  </p>
+				  <p>
+				    <label>Email: <input type="text" name="name"></label>
+				  </p>
+				  <p>
+				    <label>Message: <textarea name="message"></textarea></label>
+				  </p>
+				  <p>
+				    <button type=”submit”>Send</button>
+				  </p>
+				</form>
 			</section>
 			<section>
 				<h2 id="registry">Registry</h1>
