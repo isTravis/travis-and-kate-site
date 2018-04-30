@@ -7,19 +7,52 @@
 		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700" rel="stylesheet">
 		<title>Travis & Kate</title>
 		<meta property="og:title" content="Travis & Kate"/>
-        <meta name="twitter:title" content="Travis & Kate"/>
-        <meta name="twitter:image:alt" content="Travis & Kate"/>
-        <meta property="og:site_name" content="Travis & Kate"/>
-        <meta property="og:url" content="https://www.travisandkate.com"/>
-        <meta property="og:type" content="website"/>
-        <meta name="twitter:card" content="summary"/>
-        <meta name="description" content="Travis and Kate are getting married! This is their site for details, logistics, and more."/>
-        <meta property="og:description" content="Travis and Kate are getting married! This is their site for details, logistics, and more."/>
-        <meta name="twitter:description" content="Travis and Kate are getting married! This is their site for details, logistics, and more."/>
-        <meta property="og:image" content="https://www.travisandkate.com/images/us_01.jpg"/>
-        <meta property="og:image:url" content="https://www.travisandkate.com/images/us_01.jpg"/>
-        <meta property="og:image:width" content="500"/>
-        <meta name="twitter:image" content="https://www.travisandkate.com/images/us_01.jpg"/>
+		<meta name="twitter:title" content="Travis & Kate"/>
+		<meta name="twitter:image:alt" content="Travis & Kate"/>
+		<meta property="og:site_name" content="Travis & Kate"/>
+		<meta property="og:url" content="https://www.travisandkate.com"/>
+		<meta property="og:type" content="website"/>
+		<meta name="twitter:card" content="summary"/>
+		<meta name="description" content="Travis and Kate are getting married! This is their site for details, logistics, and more."/>
+		<meta property="og:description" content="Travis and Kate are getting married! This is their site for details, logistics, and more."/>
+		<meta name="twitter:description" content="Travis and Kate are getting married! This is their site for details, logistics, and more."/>
+		<meta property="og:image" content="https://www.travisandkate.com/images/us_01.jpg"/>
+		<meta property="og:image:url" content="https://www.travisandkate.com/images/us_01.jpg"/>
+		<meta property="og:image:width" content="500"/>
+		<meta name="twitter:image" content="https://www.travisandkate.com/images/us_01.jpg"/>
+		<script>
+			var hash = function(s) {
+				var a = 1, c = 0, h, o;
+				if (s) {
+					a = 0;
+					for (h = s.length - 1; h >= 0; h--) {
+						o = s.charCodeAt(h);
+						a = (a<<6&268435455) + o + (o<<14);
+						c = a & 266338304;
+						a = c!==0?a^c>>21:a;
+					}
+				}
+				return String(a);
+			};
+			var codes = {
+				'103814930': {
+					name: 'Walid plus guest'
+				}
+			};
+			function validateFormOnSubmit(form) {
+				var key = hash(form.code.value);
+				if (codes[key]) {
+					document.getElementById('rsvp-code-form').className = "hidden";
+					document.getElementById('rsvp-data-form').className = "";
+					document.getElementById('rsvp-code-form').className = "hidden";
+					document.getElementById('form-name').value = codes[key].name;
+				} else {
+					document.getElementById('form-error').textContent = 'Invalid Code!';
+				}
+				
+				return false;
+			}
+		</script>
 	</head>
 	<body>
 		<header>
@@ -67,28 +100,50 @@
 			<section>
 				<h2 id="lodging">Lodging</h1>
 				<p>
-					We have a block of hotel rooms reserved at the Mount Ascutney Resort.<br />
-					For reservations and rates, please call <a href="tel:802-484-7711">802-484-7711</a>.<br />
-					We are listed under the Wescott-Rich room block.<br />
+					<a class="lodge" href="https://www.ihg.com/holidayinnclubvacations/hotels/us/en/brownsville/avtcv/hoteldetail">Mount Ascutney Resort</a>
+					Great option close to the venue and nearby towns, breweries, etc. 
 				</p>
-				<p>There are also many other hotels and Airbnbs in the nearby towns of Ludlow and Woodstock.</p>
+				<p>
+					<a class="lodge" href="https://www.okemo.com/eventlodging/">Okemo Mountain Resort</a>
+					We have discounted group prices available at Okemo resort.<br />
+					Use promo code <code>travis1</code> for 1 night stays and <code>travis2</code> for a 2+ night stays.<br />
+					You can also call the Okemo Vacation Call Center at 1-800-78-OKEMO to make bookings. Tell the agents they are part of our wedding party and provide the given promo code.
+				</p>
+				
+				<p>There are also many other hotels and Airbnbs in the nearby towns of <a href="https://www.google.com/maps/search/ludlow+vt+hotels/@43.3959303,-72.7813504,12z/data=!3m1!4b1?hl=en">Ludlow</a> and <a href="https://www.google.com/maps/search/woodstock+vt+hotels/@43.5975862,-72.6227459,12z/data=!3m1!4b1?hl=en">Woodstock</a>.</p>
 			</section>
 			<section>
 				<h2 id="rsvp">RSVP</h1>	
 				<p>Please <a href="mailto:rsvp@travisandkate.com?subject=Wedding RSVP">email us to RSVP<a>. Food will be served family style, so no need to specify preference. Though, please let us know if you have any allergies or restrictions.</p>
-				<form name="contact" netlify-honeypot="bot-field" method="POST" netlify>
-				  <p class="hidden">
-				    <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-				  </p>
-				  <p>
-				    <label>Email: <input type="text" name="name"></label>
-				  </p>
-				  <p>
-				    <label>Message: <textarea name="message"></textarea></label>
-				  </p>
-				  <p>
-				    <button type=”submit”>Send</button>
-				  </p>
+				<form id="rsvp-code-form" action="#" onsubmit="return validateFormOnSubmit(this);">
+					<label>
+						Enter RSVP Code
+						<input type="text" name="code">
+					</label>
+					<button type=”submit”>Submit Code</button>
+					<div id="form-error"></div>
+				</form>
+
+				<form id="rsvp-data-form" class="hidden" name="contact" netlify-honeypot="bot-field" method="POST" netlify>
+					<label class="hidden">Don’t fill this out if you're human: <input name="bot-field"></label>
+					
+					<label>
+						RSVP For:
+						<input disabled type="text" name="name" id="form-name">
+					</label>
+					<label>
+						Email
+						<input type="text" name="email">
+					</label>
+					<label>
+						Dietary Restrictions
+						<textarea name="restrictions"></textarea>
+					</label>
+					<label>
+						Note to Kate and Travis:
+						<textarea name="note"></textarea>
+					</label>
+					<button type=”submit”>Submit RSVP</button>
 				</form>
 			</section>
 			<section>
