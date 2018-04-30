@@ -105,6 +105,14 @@ main {
 	form.hidden {
 		display: none;
 	}
+	#rsvp-data-form {
+		box-shadow: 0 0 0 1px rgba(16,22,26,.1), 0 1px 1px rgba(16,22,26,.2), 0 2px 6px rgba(16,22,26,.2);
+		padding: 20px;
+		border-radius: 3px;
+		label:nth-of-type(2) {
+			margin-top: 0px;
+		}
+	}
 	label {
 		display: block;
 		margin-top: 20px;
