@@ -113,12 +113,15 @@ main {
 			margin-top: 0px;
 		}
 	}
-	label {
+	label:not(.radio) {
 		display: block;
 		margin-top: 20px;
 		font-weight: bold;
+		&.hidden {
+			display: none;
+		}
 	}
-	input, textarea {
+	input:not([type=radio]), textarea {
 		width: 100%;
 		resize: vertical;
 		font-size: 18px;
