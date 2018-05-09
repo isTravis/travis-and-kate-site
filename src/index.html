@@ -37,7 +37,7 @@
 
 			function validateFormOnSubmit(form) {
 				var key = hash(form.code.value);
-				fetch('https://api.npoint.io/49911ef7ee768a752701/' + key)
+				fetch('https://api.npoint.io/4af7c179c053b3e82813/' + key)
 				.then(function(response) {
 					if (!response.ok) {
 						throw new Error('Invalid Code');
