@@ -102,7 +102,7 @@ main {
 		width: 100%;
 		margin-bottom: 1em;
 	}
-	form.hidden {
+	form.hidden, label.hidden {
 		display: none;
 	}
 	#rsvp-data-form {
@@ -113,6 +113,9 @@ main {
 			margin-top: 0px;
 		}
 	}
+	#form-error {
+		color: #cc0000;
+	}
 	label:not(.radio) {
 		display: block;
 		margin-top: 20px;
@@ -120,6 +123,12 @@ main {
 		&.hidden {
 			display: none;
 		}
+	}
+	.radio {
+		padding: 10px 10px 10px 2px;
+		display: inline-block;
+		margin-right: 50px;
+		cursor: pointer;
 	}
 	input:not([type=radio]), textarea {
 		width: 100%;
@@ -132,6 +141,10 @@ main {
 		&#form-name {
 			border: 0px solid black;
 			box-shadow: 0 0 0 0 black;
+			font-weight: bold;
+			position: relative;
+			left: -10px;
+			font-size: 25px;
 		}
 	}
 	textarea {

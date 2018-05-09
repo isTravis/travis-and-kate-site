@@ -14,13 +14,15 @@ var hash = function(s) {
 	return String(a);
 };
 
-const withHashCode = json.map((item)=> {
-	return {
-		...item,
-		hash: hash(item.code),
+const withHashCode = json.reduce((prev, curr)=> {
+	const hashedCode = hash(curr.code);
+	prev[hashedCode] = {
+		...curr,
+		hash: hashedCode,
 		code: undefined,
 	};
-});
-const uniques = [...new Set(withHashCode.map(item => item.hash))];
-console.log("Is Unique: ", uniques.length === withHashCode.length );
+	return prev;
+}, {});
+// const uniques = [...new Set(withHashCode.map(item => item.hash))];
+// console.log("Is Unique: ", uniques.length === withHashCode.length );
 console.log(JSON.stringify(withHashCode, null, 4));

@@ -34,22 +34,28 @@
 				}
 				return String(a);
 			};
-			var codes = {
-				'103814930': {
-					name: 'Walid plus guest'
-				}
-			};
+
 			function validateFormOnSubmit(form) {
 				var key = hash(form.code.value);
-				if (codes[key]) {
+				fetch('https://api.npoint.io/49911ef7ee768a752701/' + key)
+				.then(function(response) {
+					if (!response.ok) {
+						throw new Error('Invalid Code');
+					}
+					return response.json();
+				})
+				.then(function(codeData) {
 					document.getElementById('rsvp-code-form').className = "hidden";
 					document.getElementById('rsvp-data-form').className = "";
 					document.getElementById('rsvp-code-form').className = "hidden";
-					document.getElementById('form-name').value = codes[key].name;
-				} else {
+					document.getElementById('form-name').value = codeData.name;
+					if (codeData.plus1) {
+						document.getElementByClassId('guest-label" guest-label').className = "";
+					}
+				})
+				.catch(function(err) {
 					document.getElementById('form-error').textContent = 'Invalid Code!';
-				}
-				
+				});
 				return false;
 			}
 		</script>
@@ -143,19 +149,23 @@
 					<label>
 						Will you be attending?
 					</label>
-					<input type="radio" id="contactChoice1" name="rsvp" value="rsvp-yes">
-				    <label for="contactChoice1" class="radio">Yes!</label>
 
-				    <input type="radio" id="contactChoice2" name="rsvp" value="rsvp-no">
-				    <label for="contactChoice2" class="radio">No</label>
+					
+				    <label for="contactChoice1" class="radio">
+				    	<input type="radio" id="contactChoice1" name="rsvp" value="rsvp-yes"> Yes!
+				    </label>
 
-					<label>
+				    <label for="contactChoice2" class="radio">
+				    	<input type="radio" id="contactChoice2" name="rsvp" value="rsvp-no"> No
+				    </label>
+
+					<label id="guest-label" class="hidden">
 						Guest name
 						<input type="text" name="guest-name" placeholder="Name of the guest you are bringing, if any.">
 					</label>
 					<label>
 						Dietary Restrictions
-						<textarea name="restrictions" placeholder="Food will be served family style, so no need to select a dish. Though, please let us know of any allergies or restrictions."></textarea>
+						<textarea name="restrictions" placeholder="Food will be served family style, so no need to select a dish. However, please let us know of any allergies or restrictions."></textarea>
 					</label>
 					<label>
 						Note to Kate and Travis:
